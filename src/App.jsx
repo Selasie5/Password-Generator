@@ -5,7 +5,9 @@ import PasswordGenerator from './PasswordGenerator'
 const App = () => {
   return (
    <>
+   <div className='password-generator'>
    <PasswordGenerator/>
+   </div>
    </>
   )
 }

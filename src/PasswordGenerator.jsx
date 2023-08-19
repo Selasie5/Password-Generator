@@ -31,7 +31,7 @@ const PasswordGenerator = () => {
     }
     
   return (
-    <div>
+    <div className='main-component'>
         <h1>Password Generator</h1>
         <div>
             <h2>Genrated Password</h2>
