@@ -1,4 +1,6 @@
 import  {useState} from 'react'
+import { Toaster, toast } from 'react-hot-toast';
+import {FaCopy, FaKey} from 'react-icons/fa6'
 
 const PasswordGenerator = () => {
     //Definfing states for password generator
@@ -29,13 +31,24 @@ const PasswordGenerator = () => {
        }
        setPassword(newPassword)
     }
+    //this function allows the user to copy the generated password
+    const copyPassword=()=>
+    {
+        if(password !== '')
+        {
+            navigator.clipboard.writeText(password);
+        }
+        toast.success('The password has been copied');
+    }
     
   return (
     <div className='main-component'>
+        <Toaster position='top-left'reverseOrder={false}/>
         <h1>Password Generator</h1>
-        <div>
-            <h2>Genrated Password</h2>
-            <p>{password}</p></div>
+        <div className='password-section' style={{marginBlock:'1rem', padding:'1rem',backgroundColor:'white',height: 'fit-content',borderRadius: '5px',display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+            <p>{password}</p>
+            <FaCopy style={{color:'#157404',fontSize: '1.5rem'}} onClick={copyPassword}/>
+            </div>
         <div>
             <label>Password Length: </label>
             <input 
@@ -76,8 +89,8 @@ const PasswordGenerator = () => {
             }}/>
             <label>Include Special Characters</label>
         </div>
-        <div>
-            <button onClick={generatePassword}>Generate Password</button>
+        <div style={{marginBlock:'1.5rem',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+            <button onClick={generatePassword} style={{padding: '15px 30px',backgroundColor: '#11ED69',border: 'none', color:'white',textTransform:'uppercase',borderRadius:'10px'}}>Generate Password <FaKey/></button>
         </div>
         </div>
   )
